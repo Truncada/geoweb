@@ -1,39 +1,50 @@
 <html>
+
     <head>
-    <meta charset='utf-8' />
-    <title>Edificios</title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
-    <link href='css/estilobase.css' rel='stylesheet' />
+        <meta charset='utf-8' />
+        <title>Edificios Valencia</title>
+        <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+        <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" />
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+        <!-- Calen per afegir geocoder -->
+        <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+        <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+    
+        <!--Reaprovechamos estilo de la práctica 3, edificios-->
+        <link href='css/estilobase.css' rel='stylesheet' />
+        <!--<script src='js/valencia.js'></script>-->
 
+        <script>
+            var map;
+            function init() {
+                mapboxgl.accessToken =
+                    'pk.eyJ1IjoibWFwYXRvciIsImEiOiJja3dxaXdvZm8wbXI5Mm9xb2JraDJmMjY3In0.cluUTNNRHJwurzUx6dMZDQ';
+                map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/dark-v10',
+                    center: [ -0.376347296480418, 39.46971305343229 ],
+                    zoom: 15,
+                    attributionControl: false,
+                    pitch: 45,
+                    hash: true
+                });
 
-    <script>
-        //Añadir vuestor token y/o estilo !!
-        var map;
-        function init() {
-            mapboxgl.accessToken =
-                'pk.eyJ1IjoiZ2lzbWFzdGVybTIiLCJhIjoiY2plZHhubTQxMTNoYzMza3Rqa3kxYTdrOCJ9.53B1E6mKD_EQOVb2Y0-SsA';
-             map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/mapbox/dark-v10',
-                center: [ -0.376347296480418, 39.46971305343229 ],
-                zoom: 15,
-                attributionControl: false,
-                pitch: 45,
-                hash: true
-            });
+                map.addControl(new mapboxgl.AttributionControl({ compact: true }));
+                map.addControl(new mapboxgl.NavigationControl());
 
-            map.addControl(new mapboxgl.AttributionControl({ compact: true }));
-            map.addControl(new mapboxgl.NavigationControl());
+                map.addControl(
+                    new MapboxGeocoder({
+                    accessToken: mapboxgl.accessToken,
+                    mapboxgl: mapboxgl,
+                    bbox:[ -0.8040464595956109 , 39.22401204479797 , 0.010398749996284096 , 39.70734534726117]
+                    }));
 
-        } // final init
-    </script>
+            } // final init
+        </script>
     </head>
 
     <body onload="init()">
-
         <div id="map"></div>
     </body>
 
-    </html>
+</html>
