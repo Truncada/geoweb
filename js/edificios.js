@@ -54,7 +54,7 @@ function addPopupToMapEdificios(nombreCapa) {
             for (key in features[0].properties) {
 
                 if (key == "numberOfFl") {
-                    text += "<b>Numero de plantas</b>:" + features[0].properties[key] + "<br>";
+                    text += "<b>Number of floors</b>:" + features[0].properties[key] + "<br>";
                 }
                 if (key == "localId") {
                     //localId 0004702DF3800C_part1
@@ -67,7 +67,7 @@ function addPopupToMapEdificios(nombreCapa) {
                     var parte1 = localIdSplit[0].substring(0, 7);
                     var parte2 = localIdSplit[0].substring(7, localIdSplit[0].length);
                     text += "<img width=200 src=http://ovc.catastro.meh.es/OVCServWeb/OVCWcfLibres/OVCFotoFachada.svc/RecuperarFotoFachadaGet?ReferenciaCatastral=" + localId + "><br>";
-                    text += "<a target=blank href=https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?rc1=" + parte1 + "&rc2=" + parte2 + ">Ficha</a><br>";
+                    text += "<a target=blank href=https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?rc1=" + parte1 + "&rc2=" + parte2 + ">Cadastral record</a><br>";
                 }
 
             }
