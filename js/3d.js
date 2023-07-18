@@ -32,11 +32,6 @@ function add3D() {
                 'fill-extrusion-opacity': 0.9
             }
         });
-
-
-
-
-
-
+        
 
 } //fin funcion

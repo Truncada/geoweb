@@ -2,14 +2,14 @@ function addEdificiosCapa() {
 
     map.addSource("edificios_source", {
         "type": "vector",
-        "url": "mapbox://mapator.8h50cr32"  // mapbox://Nuestor ID Tileset
+        "url": "mapbox://mapator.8h50cr32"  // mapbox: ID Tileset
     }); //fin map source
 
     map.addLayer({
         "id": "edificios",
         "type": "fill-extrusion",
         "source": "edificios_source",
-        "source-layer": "construcciones-5xd1nq", // Nuestro nombre Tileset
+        "source-layer": "construcciones-5xd1nq", // Nombre Tileset
         "maxzoom": 21,
         "minzoom": 15,
         "filter": [">", "numberOfFl", 0],
