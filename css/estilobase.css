@@ -1,5 +1,8 @@
 body {
     margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: #7a26bf;
+
 }
 
 #map {
@@ -18,8 +21,7 @@ body {
     padding: 10px;
     font-weight: bold;
     font-size: 20px;
-    color: #bf2626;
-    border-radius: 5px;
+    border-radius: 5px 0 5px 5px;
 }
 
 .panelTopIzquierda label{
@@ -29,6 +31,16 @@ body {
 .panelTopIzquierda input[type=range]{
     cursor:pointer;
     width: 95%;
+}
+
+#menu {
+    position: absolute;
+    left: 240px;
+    top: 18px;
+    z-index: 1000;
+    background: rgba(255,255,255,0.9);
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
 }
 
 .panelTitulo{

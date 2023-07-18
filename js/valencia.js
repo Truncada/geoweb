@@ -1,9 +1,10 @@
 function addEdificiosCapa() {
-
+    
+    alert('Socorro');
+    
     map.addSource("edificios_source", {
         "type": "vector",
         "url": "mapbox://mapator.amy749j0"  // mapbox:// ID Tileset
-
     }); //fin map source
 
 
@@ -44,7 +45,6 @@ function filtrarEdificios(valor) {
     map.setFilter("edificios", [">", "numberOfFl", parseInt(valor)]);
 
     document.getElementById("altura").innerHTML = "More than <b>" + valor + "</b> floors";
-
 }
 
 function addPopupToMapEdificios(nombreCapa) {
