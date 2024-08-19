@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
-    
 <head>
     <meta charset='utf-8' />
-    <title>Volcanes activos</title>
+    <title>Tryout Barna</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css' rel='stylesheet' />
     <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
     <script src="https://unpkg.com/scrollama"></script>
     <style>
@@ -110,13 +109,13 @@
             touch-action: unset;
         }
 
-    </style>
+        </style>
 </head>
 <body>
 
 <div id="map"></div>
 <div id="story"></div>
-<script src="js/config_volcano.js"></script>
+<script src="./config.js"></script>
 <script>
 var layerTypes = {
     'fill': ['fill-opacity'],
@@ -288,6 +287,51 @@ map.on("load", function() {
         });
     };
 
+/* QZ
+addEdificiosCapa();
+
+///// 
+var layers = map.getStyle().layers;
+
+      var labelLayerId;
+      for (var i = 0; i < layers.length; i++) {
+        if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+          labelLayerId = layers[i].id;
+          break;
+        }
+      }
+
+      map.addLayer({
+        'id': '3d-buildings',
+        'source': 'composite',
+        'source-layer': 'building',
+        'filter': ['==', 'extrude', 'true'],
+        'type': 'fill-extrusion',
+        'minzoom': 15,
+        'paint': {
+          'fill-extrusion-color': '#aaa',
+
+          // use an 'interpolate' expression to add a smooth transition effect to the
+          // buildings as the user zooms in
+          'fill-extrusion-height': [
+            "interpolate", ["linear"],
+            ["zoom"],
+            15, 0,
+            15.05, ["get", "height"]
+          ],
+          'fill-extrusion-base': [
+            "interpolate", ["linear"],
+            ["zoom"],
+            15, 0,
+            15.05, ["get", "min_height"]
+          ],
+          'fill-extrusion-opacity': 0.6
+        }
+      }, labelLayerId);
+    });
+*/////////////////QZ
+
+
     // setup the instance, pass callback functions
     scroller
     .setup({
@@ -325,7 +369,8 @@ map.on("load", function() {
         if (chapter.onChapterExit.length > 0) {
             chapter.onChapterExit.forEach(setLayerOpacity);
         }
-    });
+    });              
+
 });
 
 // setup resize event

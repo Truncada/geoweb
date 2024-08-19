@@ -17,7 +17,7 @@
 
     body { font-family: 'Comfortaa', cursive, sans-serif ; font-size: 16px ; }
     @media screen and (max-width: 500px) { body { font-size: 80% !important; } } 
-    h4 { color: rgb(255, 255, 255); text-shadow: 2px 2px 4px #000000; font-weight: bold; }
+    h4,h5 { color: rgb(255, 255, 255); text-shadow: 2px 2px 4px #000000; font-weight: bold; }
     small { font-size: 60% !important; }
 
     .seccion { border-radius: 0px !important; }
@@ -30,7 +30,8 @@
     .kepler { background-color: rgb(255, 255, 0, 0.4); }     
     .practicas { background-color: rgb(0, 128, 0, 0.4); }
     .practica { background-color: rgb(0, 0, 255, 0.4); }        
-    .tesina { background-color: rgba(109, 109, 148, 0.298); }      
+    .tesina { background-color: rgba(109, 109, 148, 0.298); }
+    .quarentena { background-color: rgba(255, 0, 0, 0.298); a { border-bottom: #902e4a 0.125em solid; }; a:hover { text-decoration: none;}; }      
   
   </style>
 
@@ -44,7 +45,7 @@
         <br>
         <small>
           Mapes i OpenData, Localització, Visualizació i Anàlisi de dades geogràfiques
-          <br><br><em>A Firefox pot donar errors!</em>
+          <br><br><em>A Firefox pot donar errors! Desbloquejeu els Blockers^^.</em>
         </small>
       </h4>
     </nav>
@@ -139,7 +140,7 @@
       <div class="col">
         <ul>
           <li>
-            <a href="a.html" target="_blank">Pràctica bars de Barna</a>
+            <a href="a.html" target="_blank">Pràctica bars de Barna</a> To-do!
           </li>
         </ul>
       </div>
@@ -160,6 +161,69 @@
         </ul>
       </div>
     </div>
+  </div>
+
+  <div class="alert seccion quarentena">
+    <h4>QZ</h4>
+    <div class="row">
+      <div class="col">
+        <ul>
+          <li>
+            <a href="BuildingsOSMext.html" target="_blank">Extrusió OSM,</a> <a href="https://github.com/pratikyadav/maps/blob/gh-pages/mapbox-3d-buildings/index.html" target="_blank">exemple</a>
+          </li>
+          <li>
+            <a href="new3dbuildings.html" target="_blank">Edificis dissenyats en 3D,</a> <a href="https://github.com/pratikyadav/maps/blob/gh-pages/mapbox-standard/index.html" target="_blank">exemple</a>
+          </li>
+          <li>
+            <a href="storytelling-Barcelona" target="_blank">3D a storytelling?</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="alert seccion MapboxGLJS">
+        <h5>Proves: 3D</h5>
+        <ul>
+          <li><h6><a href="https://docs.mapbox.com/studio-manual/guides/publish-your-style/" target="_blank">Style</a> with components (Mapbox Studio)</h6>
+            <ul>
+              <li>
+                <a href="Proves/a.html" target="_blank">a.</a> <a href="https://docs.mapbox.com/help/tutorials/add-3d-buildings-studio/">Add 3D buildings to a Mapbox Studio style
+                </a></a>
+              </li>
+              <li>
+                <a href="Proves/b.html" target="_blank">b.</a> Adding Mapbox "Standard" with the <a href="https://docs.mapbox.com/mapbox-gl-js/guides/migrate/" target="_blank">new 3D feature</a> for buildings through a style
+              </li>
+            </ul>
+          </li>
+          <li><h6>From HTML</h6>
+            <ul>
+              <li>
+                <a href="Proves/c.html" target="_blank">c.</a> Extrusion with OSM height <a href="https://docs.mapbox.com/mapbox-gl-js/example/3d-buildings/" target="_blank">from html</a> instead of styles
+              </li>
+              <li>
+                <a href="Proves/d.html" target="_blank">d.</a> Adding the <a href="https://docs.mapbox.com/mapbox-gl-js/guides/migrate/" target="_blank">new 3D style</a> in script
+              </li>
+            </ul>
+          </li>
+          <li><h6>Custom datasets</h6>
+            <ul>
+              <li>
+                <a href="Proves/e.html" target="_blank">e.</a> Afegir estil a partir de <a href="https://docs.mapbox.com/help/tutorials/add-3d-buildings-studio/#option-2-style-an-individual-layer" target="_blank">tileset</a> amb propietats nostres, i cridar-lo
+              </li>
+              <li>
+                <a href="Proves/f.html" target="_blank">f.</a> Afegir des d'HTML a partir de <a href="https://docs.mapbox.com/help/tutorials/add-3d-buildings-studio/#option-2-style-an-individual-layer" target="_blank">custom tileset</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+    </div>
+    <div class="alert seccion MapboxGLJS">
+      <h5>Proves: ST</h5>
+      <ul>
+        <li>
+        </li>
+      </ul>
+    </div>
+  </div>
 
 </body>
 </html>
