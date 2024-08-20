@@ -15,3 +15,4 @@ Els mapes de l'assignatura M2B i posteriors.
 - e
     - Transparency basemap
     - Zoom
+Nem a liar-la només al readme per si fem explotar git. Última ver de la branca està currently a github pel que no s'haurien de tenir problemes ^^.
