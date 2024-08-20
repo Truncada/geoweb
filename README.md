@@ -12,4 +12,6 @@ Els mapes de l'assignatura M2B i posteriors.
 
 
 ## BSC
-- Transparency basemap e
+- e
+    - Transparency basemap
+    - Zoom
