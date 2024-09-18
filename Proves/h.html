@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>a_3dEstandard-Studio</title>
+    <title>h_3dCadDistRef-GLJS+PopUps</title>
     <meta
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
@@ -32,10 +32,25 @@
         'pk.eyJ1IjoibWFwYXRvciIsImEiOiJja3dxaXdvZm8wbXI5Mm9xb2JraDJmMjY3In0.cluUTNNRHJwurzUx6dMZDQ';
       const map = new mapboxgl.Map({
         container: 'map', // container ID
-        style: 'mapbox://styles/mapator/clzqtf0vp00ai01pfbjxcfxs9',
+        //        style:"mapbox://styles/mapator/cm0noe49300dk01qodoht6wq2",
         center: [2.17404, 41.40337], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-        zoom: 17.5, // starting zoom
-        pitch: 75,
+        zoom: 17, // starting zoom
+        //	bbox=[2.1066 , 41.3000 , 2.2536 , 41.4468]
+      });
+
+      map.on('load', () => {
+        //1. basemap -> style
+        //Zoom x; pitch y
+        //2. districtes 2D
+        //3. Buildings
+        //Buffers
+        //4. Marcadors
+
+        //map.addSource
+        //map.addLayer
+
+        map.addControl(new mapboxgl.NavigationControl());
+        // Per crear side panel: metamapa
       });
     </script>
   </body>

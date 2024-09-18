@@ -2,34 +2,104 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>NEW standard Style</title>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v3.5.1/mapbox-gl.js"></script>
+    <title>d_ExtrusioOSM-GLJS</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
     <link
       href="https://api.mapbox.com/mapbox-gl-js/v3.5.1/mapbox-gl.css"
       rel="stylesheet"
     />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.5.1/mapbox-gl.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
   </head>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-    }
-    #map {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 100%;
-    }
-  </style>
   <body>
     <div id="map"></div>
     <script>
       mapboxgl.accessToken =
-        "pk.eyJ1IjoibWFwYXRvciIsImEiOiJja3dxaXdvZm8wbXI5Mm9xb2JraDJmMjY3In0.cluUTNNRHJwurzUx6dMZDQ";
+        'pk.eyJ1IjoibWFwYXRvciIsImEiOiJja3dxaXdvZm8wbXI5Mm9xb2JraDJmMjY3In0.cluUTNNRHJwurzUx6dMZDQ';
       const map = new mapboxgl.Map({
-        container: "map", // container ID
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/light-v11',
         center: [2.17404, 41.40337], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-        zoom: 17,
+        zoom: 17.5, // starting zoom
+        pitch: 75,
+        container: 'map',
+      });
+
+      map.on('style.load', () => {
+        // Insert the layer beneath any symbol layer.
+        const layers = map.getStyle().layers;
+        const labelLayerId = layers.find(
+          layer => layer.type === 'symbol' && layer.layout['text-field'],
+        ).id;
+
+        // The 'building' layer in the Mapbox Streets
+        // vector tileset contains building height data
+        // from OpenStreetMap.
+        map.addLayer(
+          {
+            id: 'add-3d-buildings',
+            source: 'composite',
+            'source-layer': 'building',
+            filter: ['==', 'extrude', 'true'],
+            type: 'fill-extrusion',
+            minzoom: 15,
+            paint: {
+              'fill-extrusion-color': [
+                'interpolate',
+                ['linear'],
+                ['get', 'height'],
+                0,
+                'hsl(220, 0%, 100%)',
+                7.5,
+                'hsl(0, 100%, 48%)',
+                30.6,
+                'hsl(90, 100%, 49%)',
+                53.8,
+                'hsl(220, 88%, 42%)',
+                100,
+                'hsl(259, 95%, 63%)',
+              ],
+
+              // Use an 'interpolate' expression to
+              // add a smooth transition effect to
+              // the buildings as the user zooms in.
+              'fill-extrusion-height': [
+                'interpolate',
+                ['linear'],
+                ['zoom'],
+                15,
+                0,
+                15.05,
+                ['get', 'height'],
+              ],
+              'fill-extrusion-base': [
+                'interpolate',
+                ['linear'],
+                ['zoom'],
+                15,
+                0,
+                15.05,
+                ['get', 'min_height'],
+              ],
+              'fill-extrusion-opacity': 0.6,
+            },
+          },
+          labelLayerId,
+        );
       });
     </script>
   </body>
