@@ -1,5 +1,5 @@
 # geoweb
-Els mapes de l'assignatura M2B i posteriors.
+Experiments amb mapes
 
 ## A arreglar
 - Pràctica Burna
@@ -9,10 +9,3 @@ Els mapes de l'assignatura M2B i posteriors.
 - Edificios Valencia change of color
     - Might not work bc we have to 'clear' map?
         - Mirar-ho en els de canvi de llum
-
-
-## BSC
-- e
-    - Transparency basemap
-    - Zoom
-Nem a liar-la només al readme per si fem explotar git. Última ver de la branca està currently a github pel que no s'haurien de tenir problemes ^^.

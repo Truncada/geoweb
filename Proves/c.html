@@ -12,28 +12,17 @@
       href="https://api.mapbox.com/mapbox-gl-js/v3.5.1/mapbox-gl.css"
       rel="stylesheet"
     />
+    <link href='css/style.css' rel='stylesheet' />
   </head>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-    }
-    #map {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 100%;
-    }
-  </style>
   <body>
-    <div id="map"></div>
+    <div id="mapa"></div>
     <script>
       mapboxgl.accessToken =
         'pk.eyJ1IjoibWFwYXRvciIsImEiOiJja3dxaXdvZm8wbXI5Mm9xb2JraDJmMjY3In0.cluUTNNRHJwurzUx6dMZDQ';
       const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        center: [2.17404, 41.40337], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-        zoom: 17.5, // starting zoom
+        container: 'mapa', 
+        center: [2.17404, 41.40337],
+        zoom: 17.5, 
         pitch: 75,
       });
     </script>

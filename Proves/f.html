@@ -11,30 +11,18 @@
       href="https://api.mapbox.com/mapbox-gl-js/v3.5.1/mapbox-gl.css"
       rel="stylesheet"
     />
-    <!--MAPBOX NEW STANDARD STYLES ONLY IF 3.5!!!-->
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.5.1/mapbox-gl.js"></script>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-      }
-    </style>
+    <link href='css/style.css' rel='stylesheet' />
     <body>
-      <div id="map"></div>
+      <div id="mapa"></div>
       <script>
         mapboxgl.accessToken =
           'pk.eyJ1IjoibWFwYXRvciIsImEiOiJja3dxaXdvZm8wbXI5Mm9xb2JraDJmMjY3In0.cluUTNNRHJwurzUx6dMZDQ';
         map = new mapboxgl.Map({
-          container: 'map',
+          container: 'mapa',
           style: 'mapbox://styles/mapbox/light-v11',
-          center: [2.170529, 41.387485], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-          zoom: 14, // starting zoom
+          center: [2.170529, 41.387485], 
+          zoom: 14, 
           pitch: 55,
           attributionControl: false,
           hash: true,
@@ -42,17 +30,16 @@
         map.on('load', function() {
           map.addSource('edificios_source', {
             type: 'vector',
-            url: 'mapbox://mapator.4bzarn0j', // mapbox: ID Tileset, Barnai
+            url: 'mapbox://mapator.4bzarn0j', // mapbox: ID Tileset, Barcelona buildings from catastral dataset
           });
 
         map.addLayer({
             id: 'edificios',
             type: 'fill-extrusion',
             source: 'edificios_source',
-            'source-layer': 'Barnai-a0jwiv', // Nombre Tileset
+            'source-layer': 'Barnai-a0jwiv', // Tileset name
             maxzoom: 20,
             minzoom: 14,
-            //"filter": [">", "numberOfFl", 0],
             paint: {
               'fill-extrusion-color': [
                 'match',
@@ -83,7 +70,7 @@
                 '*',
                 2,
                 ['to-number', ['get', 'numberOfFl']],
-              ], //to-number, el valor que passo com a altura no sé si és nombre o no.
+              ], //to-number, to make sure the value read is a number 
               'fill-extrusion-opacity': 0.9,
             },
           });

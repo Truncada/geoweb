@@ -1,41 +1,35 @@
+<!-- Code adapted from: https://docs.mapbox.com/mapbox-gl-js/guides/migrate/ -->
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <title>a_3dEstandard-Studio</title>
+    <!-- Responsive: https://www.w3schools.com/html/html_responsive.asp -->
     <meta
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
     />
+    <!-- Important to reference from API v3 onwards -->
     <link
       href="https://api.mapbox.com/mapbox-gl-js/v3.5.1/mapbox-gl.css"
       rel="stylesheet"
     />
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.5.1/mapbox-gl.js"></script>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-      }
-    </style>
+    <link href='css/style.css' rel='stylesheet' />
   </head>
   <body>
-    <div id="map"></div>
+    <div id="mapa"></div>
     <script>
       mapboxgl.accessToken =
-        'pk.eyJ1IjoibWFwYXRvciIsImEiOiJja3dxaXdvZm8wbXI5Mm9xb2JraDJmMjY3In0.cluUTNNRHJwurzUx6dMZDQ';
+        'pk.eyJ1IjoibWFwYXRvciIsImEiOiJja3dxaXdvZm8wbXI5Mm9xb2JraDJmMjY3In0.cluUTNNRHJwurzUx6dMZDQ'; // Token to access the API
       const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/mapator/clzqtf0vp00ai01pfbjxcfxs9',
-        center: [2.17404, 41.40337], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-        zoom: 17.5, // starting zoom
-        pitch: 75,
+        container: 'mapa', // Container ID
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapator/clzqtf0vp00ai01pfbjxcfxs9', // URL to Mapbox Studio style
+        center: [2.17404, 41.40337], // Starting position [lng, lat]. Note that lat must be set between -90 and 90
+        zoom: 17.5, // Starting zoom
+        pitch: 75, // Starting angle: https://docs.mapbox.com/mapbox-gl-js/api/properties/#cameraoptions
       });
     </script>
   </body>
