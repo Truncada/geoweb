@@ -1,6 +1,6 @@
 function addFarmacias() {
   console.info(farmaciasGeoJSON);
-  //var url = 'datos/farmacias.geojson';
+//  var url = 'datos/farmacias.geojson';
   var url = farmaciasGeoJSON;
   map.addSource("farmacias", {
     type: "geojson",

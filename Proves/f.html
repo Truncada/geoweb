@@ -20,7 +20,7 @@
           'pk.eyJ1IjoibWFwYXRvciIsImEiOiJja3dxaXdvZm8wbXI5Mm9xb2JraDJmMjY3In0.cluUTNNRHJwurzUx6dMZDQ';
         map = new mapboxgl.Map({
           container: 'mapa',
-          style: 'mapbox://styles/mapbox/light-v11',
+          style: 'mapbox://styles/mapbox/light-v11', // Estil pla per evitar superposició
           center: [2.170529, 41.387485], 
           zoom: 14, 
           pitch: 55,
@@ -37,7 +37,7 @@
             id: 'edificios',
             type: 'fill-extrusion',
             source: 'edificios_source',
-            'source-layer': 'Barnai-a0jwiv', // Tileset name
+            'source-layer': 'Barnai-a0jwiv', // Layer name
             maxzoom: 20,
             minzoom: 14,
             paint: {
@@ -58,13 +58,14 @@
                 'hsl(209, 71%, 36%)',
                 ['Sants-Montjuïc'],
                 'hsl(283, 74%, 54%)',
-                ['Nou Barris'],
+                ['Nou Barris'],	
                 'hsl(286, 93%, 22%)',
                 ['Sant Andreu'],
                 'hsl(348, 100%, 59%)',
                 ['Les Corts'],
                 'hsl(44, 100%, 55%)',
-                '#000000',
+		//No value
+                '#FFFFFF',
               ],
               'fill-extrusion-height': [
                 '*',

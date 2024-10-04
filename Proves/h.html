@@ -12,119 +12,118 @@
       rel="stylesheet"
     />
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.5.1/mapbox-gl.js"></script>
-    <link href='css/style.css' rel='stylesheet' />
+    <link href="css/style.css" rel="stylesheet" />
   </head>
   <body>
     <div id="mapa"></div>
     <script>
-           mapboxgl.accessToken =
-             'pk.eyJ1IjoibWFwYXRvciIsImEiOiJja3dxaXdvZm8wbXI5Mm9xb2JraDJmMjY3In0.cluUTNNRHJwurzUx6dMZDQ';
-           const map = new mapboxgl.Map({
-             container: 'mapa', // container ID
-             style: 'mapbox://styles/mapbox/light-v11',
-             center: [2.14404, 41.37337], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-             zoom: 12, // starting zoom
-             pitch: 45,
-             bearing: -45,
-             //bbox=[2.1066 , 41.3000 , 2.2536 , 41.4468]
-           });
+      mapboxgl.accessToken =
+        'pk.eyJ1IjoibWFwYXRvciIsImEiOiJja3dxaXdvZm8wbXI5Mm9xb2JraDJmMjY3In0.cluUTNNRHJwurzUx6dMZDQ';
+      const map = new mapboxgl.Map({
+        container: 'mapa', // container ID
+        style: 'mapbox://styles/mapbox/basic-v8', // Estil pla per evitar superposició, quan s'afegeixen "symbols", si no s'afegeixen des de studio a un estil, s'han d'agafar els que per defecte són compatibles amb uns estils limitats
+        center: [2.14404, 41.37337], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+        zoom: 12, // starting zoom
+        pitch: 45,
+        bearing: -45,
+        //bbox=[2.1066 , 41.3000 , 2.2536 , 41.4468]
+      });
 
-           map.on('load', () => {
-      //Simbolització per districtes:
-      simb_distr =  [
-                     'match',
-                     ['get', 'NOM'],
-                     ['Gràcia'],
-                     'hsl(0, 60%, 79%)',
-                     ['Horta-Guinardó'],
-                     'hsl(71, 74%, 67%)',
-                     ['Eixample'],
-                     'hsl(81, 84%, 22%)',
-                     ['Ciutat Vella'],
-                     'hsl(180, 75%, 46%)',
-                     ['Sant Martí'],
-                     'hsl(195, 81%, 35%)',
-                     ['Sarrià-Sant Gervasi'],
-                     'hsl(209, 71%, 36%)',
-                     ['Sants-Montjuïc'],
-                     'hsl(283, 74%, 54%)',
-                     ['Nou Barris'],
-                     'hsl(286, 93%, 22%)',
-                     ['Sant Andreu'],
-                     'hsl(348, 100%, 59%)',
-                     ['Les Corts'],
-                     'hsl(44, 100%, 55%)',
-                     '#000000',
-                   ];
-/*
-      //1. Punts de refugis climàtics
+      map.on('load', () => {
 
-      map.addSource('refugis_source', {
-                 type: 'vector',
-                 url: 'mapbox://mapator.cm0njz5c30fm51ulg09mcwfgt-989po', // mapbox: ID Tileset, Barnai
-             });
-//"mapbox://sprites/mapbox/bright-v8"
-      map.addLayer({
-                 id: 'refugis',
-                 type: 'symbol',
-                 source: 'refugis_source',
-                 'source-layer':'RefugisClimatics', // Nombre Tileset
-                 maxzoom: 22,
-                 minzoom: 12,
+	//Al js van entre cometes els paràmetres de les propietats que sóon string (dreta dels 2 punts) i les propietats compostes (i.e. separades per guionet) però podrien anar totes entre cometes (segurament és bona pràctica)
+
+        // 1. Simbolització per districtes:
+        simb_distr = [
+          'match',
+          ['get', 'NOM'],
+          ['Gràcia'],
+          'hsl(0, 60%, 79%)',
+          ['Horta-Guinardó'],
+          'hsl(71, 74%, 67%)',
+          ['Eixample'],
+          'hsl(81, 84%, 22%)',
+          ['Ciutat Vella'],
+          'hsl(180, 75%, 46%)',
+          ['Sant Martí'],
+          'hsl(195, 81%, 35%)',
+          ['Sarrià-Sant Gervasi'],
+          'hsl(209, 71%, 36%)',
+          ['Sants-Montjuïc'],
+          'hsl(283, 74%, 54%)',
+          ['Nou Barris'],
+          'hsl(286, 93%, 22%)',
+          ['Sant Andreu'],
+          'hsl(348, 100%, 59%)',
+          ['Les Corts'],
+          'hsl(44, 100%, 55%)',
+          '#000000',
+        ];
+
+        // CAPES: Les capes carreguen en l'ordre en que s'han definit, pel que es carregaran les capes de fons primer i les que visualment queden a dalt, últimes
+        //1. districtes 2D
+        map.addSource('districtes_source', {
+          type: 'vector',
+          url: 'mapbox://mapator.1dyhbjw4', // mapbox: ID Tileset, Barnai
+        });
+        map.addLayer({
+          id: 'districtes',
+          type: 'fill',
+          source: 'districtes_source',
+          'source-layer': 'districtes-7outfv', // Nombre Tileset
+          maxzoom: 14,
+          minzoom: 12,
+          paint: {
+            'fill-color': simb_distr,
+            'fill-opacity': 0.5,
+          },
+        });
+
+        //2. Edificis en 3d
+        map.addSource('edificis_source', {
+          type: 'vector',
+          url: 'mapbox://mapator.4bzarn0j', // mapbox: ID Tileset, Barnai
+        });
+        map.addLayer({
+          id: 'edificis',
+          type: 'fill-extrusion',
+          source: 'edificis_source',
+          'source-layer': 'Barnai-a0jwiv', // Nombre Tileset
+          maxzoom: 22,
+          minzoom: 14,
+          paint: {
+            'fill-extrusion-color': simb_distr,
+            'fill-extrusion-height': [
+              '*',
+              2,
+              ['to-number', ['get', 'numberOfFl']],
+            ], //to-number, el valor que passo com a altura no sé si és nombre o no.
+            'fill-extrusion-opacity': 0.9,
+          },
+        });
+
+        //3. Punts de refugis climàtics
+
+        map.addSource('refugis_source', {
+          type: 'vector',
+          url: 'mapbox://mapator.cm0njz5c30fm51ulg09mcwfgt-989po', //IMPORTANT: per a que la request sàpiga que ha d'anar a mapbox i utilitzi https, necessita el prefix "mapbox://
+        });
+        map.addLayer({
+          id: 'refugis', //Id de l'estil de la capa
+          type: 'symbol',
+          source: 'refugis_source',
+          maxzoom: 22,
+          minzoom: 12,
           layout: {
-      	icon-image:"castle-15" // 'mapbox-home-15',
-      	icon-size: 15
+            visibility: 'visible',
+            'icon-image': 'marker-15', // 'mapbox-home-15'
           },
-      });*/
+          'source-layer': 'RefugisClimatics',
+        });
 
-             //2. districtes 2D
-      map.addSource('districtes_source', {
-                 type: 'vector',
-                 url: 'mapbox://mapator.1dyhbjw4', // mapbox: ID Tileset, Barnai
-             });
-      map.addLayer({
-                 id: 'districtes',
-                 type: 'fill',
-                 source: 'districtes_source',
-                 'source-layer':'districtes-7outfv', // Nombre Tileset
-                 maxzoom: 14,
-                 minzoom: 12,
-                 paint: {
-                   'fill-color': simb_distr,
-                   'fill-opacity': 0.5,
-          },
+        //Navigation control: physical zoom and re-orienting to north
+        map.addControl(new mapboxgl.NavigationControl());
       });
-             // S'han afegit districtes 2D
-
-      //3. S'afegeixen els edificis en 3d
-             map.addSource('edificis_source', {
-                 type: 'vector',
-                 url: 'mapbox://mapator.4bzarn0j', // mapbox: ID Tileset, Barnai
-             });
-             map.addLayer({
-                 id: 'edificis',
-                 type: 'fill-extrusion',
-                 source: 'edificis_source',
-                 'source-layer': 'Barnai-a0jwiv', // Nombre Tileset
-                 maxzoom: 22,
-                 minzoom: 14,
-                 paint: {
-                   'fill-extrusion-color': simb_distr,
-                   'fill-extrusion-height': [
-                     '*',
-                     2,
-                     ['to-number', ['get', 'numberOfFl']],
-                   ], //to-number, el valor que passo com a altura no sé si és nombre o no.
-                   'fill-extrusion-opacity': 0.9,
-                 },
-      });
-      // S'han afegit els edificis en 3d
-
-             //4. Marcadors
-
-             map.addControl(new mapboxgl.NavigationControl());
-             // Per crear side panel: metamapa
-           });
     </script>
   </body>
 </html>

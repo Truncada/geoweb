@@ -53,9 +53,10 @@
                 'hsl(348, 100%, 59%)',
                 ['Les Corts'],
                 'hsl(44, 100%, 55%)',
-                '#000000',
+                '#ffffff',
               ];
 
+	// CAPES: Les capes carreguen en l'ordre en que s'han definit, pel que es carregaran les capes de fons primer i les que visualment queden a dalt, últimes
         //1. districtes 2D
 	map.addSource('districtes_source', {
             type: 'vector',
@@ -73,7 +74,6 @@
               'fill-opacity': 0.5,
 	    },
 	});
-        // S'han afegit districtes 2D
 	
 	//2. S'afegeixen els edificis en 3d
         map.addSource('edificis_source', {
@@ -97,10 +97,8 @@
               'fill-extrusion-opacity': 0.9,
             },
 	}); 
-	// S'han afegit els edificis en 3d
-        
+       //Navigation control: physical zoom and re-orienting to north
         map.addControl(new mapboxgl.NavigationControl());
-        // Per crear side panel: metamapa
       });
     </script>
   </body>
