@@ -1,245 +1,318 @@
 <html lang="es">
-<head>
+  <head>
+    <title>geoweb</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="autor" />
+    <meta name="description" content="descripción página" />
+    <meta name="robots" content="index,follow" />
 
-  <title>geoweb</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="autor" />
-  <meta name="description" content="descripción página">
-  <meta name="robots" content="index,follow">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css"
+      integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG"
+      crossorigin="anonymous"
+    />
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Comfortaa', cursive, sans-serif;
+        font-size: 16px;
+      }
+      @media screen and (max-width: 500px) {
+        body {
+          font-size: 80% !important;
+        }
+      }
+      h4,
+      h5 {
+        color: rgb(255, 255, 255);
+        text-shadow: 2px 2px 4px #000000;
+        font-weight: bold;
+      }
+      small {
+        font-size: 60% !important;
+      }
 
-  <style>
+      .seccion {
+        border-radius: 0px !important;
+      }
+      .container {
+        margin-top: 5px;
+      }
+      .navbar {
+        background-color: rgba(0, 0, 0, 0.6) !important;
+        margin-top: 20px;
+      }
+      .row {
+        margin-top: 10px;
+      }
 
-    body { font-family: 'Comfortaa', cursive, sans-serif ; font-size: 16px ; }
-    @media screen and (max-width: 500px) { body { font-size: 80% !important; } }
-    h4,h5 { color: rgb(255, 255, 255); text-shadow: 2px 2px 4px #000000; font-weight: bold; }
-    small { font-size: 60% !important; }
+      .MapboxGLJS {
+        background-color: rgb(255, 0, 0, 0.4);
+      }
+      .storytelling {
+        background-color: rgb(255, 165, 0, 0.4);
+      }
+      .kepler {
+        background-color: rgb(255, 255, 0, 0.4);
+      }
+      .practicas {
+        background-color: rgb(0, 128, 0, 0.4);
+      }
+      .practica {
+        background-color: rgb(0, 0, 255, 0.4);
+      }
+      .tesina {
+        background-color: rgba(109, 109, 148, 0.298);
+      }
+      .quarentena {
+        background-color: rgba(255, 0, 0, 0.298);
+        a {
+          border-bottom: #902e4a 0.125em solid;
+        }
+        a:hover {
+          text-decoration: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <h4>
+          (Alguns) Treballs del màster en sistemes d'informació geogràfica
+          <br />
+          <small>
+            + posteriors !
+            <br /><br /><em>A Firefox pot donar errors! Desbloquejeu els Blockers^^.</em>
+          </small>
+        </h4>
+      </nav>
+      <br />
 
-    .seccion { border-radius: 0px !important; }
-    .container { margin-top: 5px; }
-    .navbar { background-color: rgba(0,0,0,0.6) !important; margin-top: 20px; }
-    .row { margin-top: 10px; }
-
-    .MapboxGLJS { background-color: rgb(255, 0, 0, 0.4); }
-    .storytelling { background-color: rgb(255, 165, 0, 0.4); }
-    .kepler { background-color: rgb(255, 255, 0, 0.4); }
-    .practicas { background-color: rgb(0, 128, 0, 0.4); }
-    .practica { background-color: rgb(0, 0, 255, 0.4); }
-    .tesina { background-color: rgba(109, 109, 148, 0.298); }
-    .quarentena { background-color: rgba(255, 0, 0, 0.298); a { border-bottom: #902e4a 0.125em solid; }; a:hover { text-decoration: none;}; }
-
-  </style>
-
-</head>
-<body>
-
-  <div class="container">
-    <nav class="navbar">
-      <h4>
-        (Alguns) Treballs del màster en sistemes d'informació geogràfica
-        <br>
-        <small>
-          Mapes i OpenData, Localització, Visualizació i Anàlisi de dades geogràfiques
-          <br><br><em>A Firefox pot donar errors! Desbloquejeu els Blockers^^.</em>
-        </small>
-      </h4>
-    </nav>
-    <br>
-
-    <div class="alert seccion MapboxGLJS">
-      <h4>MapboxGLJS</h4>
-      <div class="row">
-        <div class="col">
-          <ul>
-            <li>
-              <a href="mapstyle.html" target="_blank"> Embedded first style </a>
-            </li>
-            <li>
-              <a href="mapbox-basico.html" target="_blank"> Proves mapbox </a>
-            </li>
-            <li>
-              <a href="edificios.html" target="_blank"> Cadastre </a>
-            </li>
-            <li>
-              <a href="mapa3d.html" target="_blank"> Mapa 3D </a>
-            </li>
-            <li>
-  	      <a href="mapa-rutas3d.html" target="_blank"> Mapa rutes 3D </a>
-            </li>
-	    <li>
-	      <a href="mapbox-icgc.html" target="_blank"> Mapa ICGC </a>
-	    </li>
-	    <li>
-	      <a href="terremotos.html" target="_blank"> Terratrèmols </a>
-	    </li>
-	    <li>
-	      <a href="farmacias.html" target="_blank"> Farmàcies </a>
-	    </li>
-	    <li>
-	      <a href="pwa.html" target="_blank"> PWA</a>
-	    </li>
-	    <li>
-	      <a href="poblacion.html" target="_blank"> Població</a>
-	    </li>
-	    <li>
-	      <a href="metamapa.html" target="_blank"> Metamapa</a>
-	    </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="alert seccion storytelling">
-      <h4>StoryTelling</h4>
-      <div class="row">
-        <div class="col">
-          <ul>
-            <li><a href="storytelling.html" target="_blank"> Volcans </a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="alert seccion kepler">
-      <h4>KeplerGL</h4>
-      <div class="row">
-        <div class="col">
-          <ul>
-            <li>
-              <a href="accidentes.html" target="_blank"> Accidents </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="alert seccion practicas">
-    <h4>Pràctica M2B</h4>
-    <div class="row">
-      <div class="col">
-        <ul>
-          <li>
-            <a href="valencia.html" target="_blank">Visor edificis cadastrals de València capital</a>
-          </li>
-          <li>
-            <a href="https://medium.com/@pa6eal/an-interactive-map-of-valencia-9d5b96b461ea" target="_blank">Article de Medium</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <h4>Pràctica M2A</h4>
-    <div class="row">
-      <div class="col">
-        <ul>
-          <li>
-            <a href="a.html" target="_blank">Pràctica bars de Barna</a> To-do!
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="alert seccion tesina">
-    <h4>Visor del projecte final del màster</h4>
-    <div class="row">
-      <div class="col">
-        <ul>
-          <li>
-            <a href="https://riura31.users.earthengine.app/view/visorindexsrmb" target="_blank">Visor en línia d'índexs a partir d'imatges satel·litàries de Sentinel-2</a>
-          </li>
-          <li>
-            <a href="" target="_blank">(Futur) enllaç al resum de la tesina</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="alert seccion quarentena">
-    <h4>Maps & scrollytelling</h4>
-    <div class="alert seccion MapboxGLJS">
-        <h5>Proves: 3D</h5>
-	<ul>
-	  <li>
-            <a href="Proves/pres_final.html" target="_blank">Presentació 3d.</a> 
-	  </li>
-	</ul>
-        <ul>
-          <li><h5><a href="https://docs.mapbox.com/studio-manual/guides/publish-your-style/" target="_blank">Style</a> with components (Mapbox Studio)</h5>
+      <div class="alert seccion MapboxGLJS">
+        <h4>Mapbox GL JS inicial</h4>
+        <div class="row">
+          <div class="col">
             <ul>
               <li>
-                <a href="Proves/a.html" target="_blank">a.</a> Adding Mapbox "Standard" style with the <a href="https://docs.mapbox.com/mapbox-gl-js/guides/migrate/" target="_blank">new 3D buildings feature</a>
+                <a href="gljs_inicial/mapstyle.html" target="_blank">
+                  Embedded first style
+                </a>
               </li>
               <li>
-                <a href="Proves/b.html" target="_blank">b.</a> <a href="https://docs.mapbox.com/help/tutorials/add-3d-buildings-studio/">Extrude OSM buildings with height properties</a>
+                <a href="gljs_inicial/mapbox-basico.html" target="_blank"> Proves mapbox </a>
+              </li>
+              <li>
+                <a href="gljs_inicial/mapbox-global.html" target="_blank"> Mapa global </a>
+              </li>
+              <li>
+                <a href="gljs_inicial/edificios.html" target="_blank"> Cadastre </a>
+              </li>
+              <li>
+                <a href="gljs_inicial/mapa3d.html" target="_blank"> Mapa 3D </a>
+              </li>
+              <li>
+                <a href="gljs_inicial/mapa-rutas3d.html" target="_blank"> Mapa rutes 3D </a>
+              </li>
+              <li>
+                <a href="gljs_inicial/mapbox-icgc.html" target="_blank"> Mapa ICGC </a>
+              </li>
+              <li>
+                <a href="gljs_inicial/terremotos.html" target="_blank"> Terratrèmols </a>
+              </li>
+              <li>
+                <a href="gljs_inicial/farmacias.html" target="_blank"> Farmàcies </a>
+              </li>
+              <li>
+                <a href="gljs_inicial/pwa.html" target="_blank"> PWA</a>
+              </li>
+              <li>
+                <a href="gljs_inicial/poblacion.html" target="_blank"> Població</a>
+              </li>
+              <li>
+                <a href="gljs_inicial/metamapa.html" target="_blank"> Metamapa</a>
               </li>
             </ul>
-          </li>
-          <li><h5>From HTML</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert seccion storytelling">
+        <h4>Mapbox StoryTelling</h4>
+        <div class="row">
+          <div class="col">
+            <ul>
+              <li><a href="storytelling.html" target="_blank"> Volcans </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert seccion kepler">
+        <h4>KeplerGL</h4>
+        <div class="row">
+          <div class="col">
             <ul>
               <li>
-                <a href="Proves/c.html" target="_blank">c.</a> Adding the <a href="https://docs.mapbox.com/mapbox-gl-js/guides/migrate/" target="_blank">new Standard (buildings in 3D) style</a> through the Mapbox GL JS API
-              </li>
-              <li>
-		<a href="Proves/d.html" target="_blank">d.</a> Extrusion with OSM height <a href="https://docs.mapbox.com/mapbox-gl-js/example/3d-buildings/" target="_blank">from html</a> with the Mapbox GL JS API
+                <a href="accidentes.html" target="_blank"> Accidents </a>
               </li>
             </ul>
-          </li>
-          <li><h5>Custom datasets</h5>
-	    <ul><h6>Extrusió a partir de cadastre amb representació per categories</h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert seccion practicas">
+        <h4>Pràctica M2A</h4>
+        <div class="row">
+          <div class="col">
+            <ul>
               <li>
-                <a href="Proves/e.html" target="_blank">e.</a> Afegir estil a partir de <a href="https://docs.mapbox.com/help/tutorials/add-3d-buildings-studio/#option-2-style-an-individual-layer" target="_blank">tileset</a> amb propietats nostres, des d'Studio
-                <ul>
-                  <li>
-                    <a href="Proves/e1.html" target="_blank">e1.</a> Partint d'e, omplir el zoom restant amb la capa de districtes i la mateixa simbolització categòrica
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="Proves/f.html" target="_blank">f.</a> Utilitzant el tileset de cadastre igual que e, però fent ús de l'API Mapbox GL JS
-                <ul>
-                  <li>
-                    <a href="Proves/f1.html" target="_blank">f1.</a> Partint d'e, omplir el zoom restant amb la capa de districtes i la mateixa simbolització categòrica
-                  </li>
-                </ul>
-              </li>
-	    </ul>
-	    <ul><h6>Combinació entre l'extrusió categoritzada de cadastre i els punts de refugis climàtics</h6>
-	      <li>
-		<a href="Proves/g.html" target=_blank">g.</a> Estil des de Studio a partir de la combinació entre f i els punts/<a href="https://www.youtube.com/watch?v=kzPdpZ1BDG4" target=_blank">marcadors</a> de refugis climàtics
-	      </li>
-	      <li>
-                <a href="Proves/h.html" target=_blank">h.</a> Combinació entre f i els punts/marcador amb l'API Mapbox GL JS. 
-              </li> 
-            </ul>
-            <ul><h6>Components</h6>
-              <li>
-		<a href="new3dbuildings.html" target="_blank">Edificis dissenyats en 3D,</a> <a href="https://github.com/pratikyadav/maps/blob/gh-pages/mapbox-standard/index.html" target="_blank">exemple</a>
-              </li>
-              <li>
-                <a href="Proves/x.html" target=_blank">x.</a>
-                <ul>
-                  <li>
-                    <a href="Proves/x1.html" target="_blank">x1.</a>
-                  </li>
-                </ul>
+                <a href="z.html" target="_blank">Pràctica bars de Barna</a>
+                To-do!
               </li>
             </ul>
-	</ul>
+          </div>
+        </div>
+        <h4>Pràctica M2B</h4>
+        <div class="row">
+          <div class="col">
+            <ul>
+              <li>
+                <a href="valencia.html" target="_blank">Visor d'edificis cadastrals de València capital</a>
+              </li>
+              <li>
+                <a href="https://medium.com/@pa6eal/an-interactive-map-of-valencia-9d5b96b461ea" target="_blank">Article de Medium</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert seccion tesina">
+        <h4>Visor del projecte final del màster</h4>
+        <div class="row">
+          <div class="col">
+            <ul>
+              <li>
+                <a href="https://riura31.users.earthengine.app/view/visorindexsrmb" target="_blank">Visor en línia d'índexs a partir d'imatges satel·litàries de Sentinel-2</a>
+              </li>
+              <li>
+                <a href="" target="_blank">Enllaç al resum de la tesina</a>
+                To-do!
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert seccion quarentena">
+        <h4>Maps & scrollytelling (Mapbox Studio + GL JS)</h4>
+	<h5></h5>
+
+        <div class="alert seccion MapboxGLJS">
+          <h5>Proves: 3D</h5>
+          <ul>
+            <li>
+              <a href="Proves/pres_final.html" target="_blank">Presentació 3D</a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <h5>
+                <a href="https://docs.mapbox.com/studio-manual/guides/publish-your-style/" target="_blank">Style</a> with components (Mapbox Studio)
+              </h5>
+              <ul>
+                <li>
+                  <a href="Proves/a.html" target="_blank">a.</a> Adding Mapbox "Standard" style with the <a href="https://docs.mapbox.com/mapbox-gl-js/guides/migrate/" target="_blank">new 3D buildings feature</a>
+                </li>
+                <li>
+                  <a href="Proves/b.html" target="_blank">b.</a>
+                  <a href="https://docs.mapbox.com/help/tutorials/add-3d-buildings-studio/">Extrude OSM buildings with height properties</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h5>From HTML (GL JS)</h5>
+              <ul>
+                <li>
+                  <a href="Proves/c.html" target="_blank">c.</a> Adding the <a href="https://docs.mapbox.com/mapbox-gl-js/guides/migrate/" target="_blank">new Standard (buildings in 3D) style</a> through the Mapbox GL JS API
+                </li>
+                <li>
+                  <a href="Proves/d.html" target="_blank">d.</a> Extrusion with OSM height <a href="https://docs.mapbox.com/mapbox-gl-js/example/3d-buildings/" target="_blank">from HTML</a> with the Mapbox GL JS API
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h5>Custom datasets</h5>
+              <ul>
+                <h6>
+                  Extrusió a partir de cadastre amb representació per categories
+                </h6>
+                <li>
+                  <a href="Proves/e.html" target="_blank">e.</a> Afegir estil a partir de <a href="https://docs.mapbox.com/help/tutorials/add-3d-buildings-studio/#option-2-style-an-individual-layer" target="_blank">tileset</a> amb variables pròpies, des d'Studio
+		  <ul>
+                    <li>
+                      <a href="Proves/e1.html" target="_blank">e1.</a> Partint
+                      d'e, omplir el zoom restant amb la capa de districtes i la
+                      mateixa simbolització categòrica
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="Proves/f.html" target="_blank">f.</a> Utilitzant el
+                  tileset de cadastre igual que e, però fent ús de l'API Mapbox
+                  GL JS
+                  <ul>
+                    <li>
+                      <a href="Proves/f1.html" target="_blank">f1.</a> Partint
+                      d'f, omplir el zoom restant amb la capa de districtes i la
+                      mateixa simbolització categòrica
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <ul>
+                <h6>
+                  Combinació entre l'extrusió categoritzada de cadastre i els
+                  punts de refugis climàtics
+                </h6>
+                <li>
+                  <a href="Proves/g.html" target="_blank">g.</a> Estil des de
+                  Studio a partir de la combinació entre f1 i els punts/<a href="https://www.youtube.com/watch?v=kzPdpZ1BDG4" target="_blank">marcadors</a>
+                  de refugis climàtics
+                </li>
+                <li>
+                  <a href="Proves/h.html" target="_blank">h.</a> Combinació
+                  entre f1 i els punts/marcadors amb l'API Mapbox GL JS.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!--- Div Proves 3D -->
+
+        <div class="alert seccion MapboxGLJS">
+          <h5>Proves: ST</h5>
+          <ul>
+            <li>
+              <a href="storytelling-Barcelona.html" target="_blank">Proves 3D amb API de storytelling</a>
+            </li>
+          </ul>
+        </div>
+        <!--- Div Proves ST -->
+
+      </div>
+      <!--- Div quarentena -->
     </div>
-    <div class="alert seccion MapboxGLJS">
-      <h5>Proves: ST</h5>
-      <ul>
-        <li>
-           <a href="storytelling-Barcelona" target="_blank">3D a storytelling?</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</body>
+    <!--- Div container -->
+  </body>
 </html>

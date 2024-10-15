@@ -30,8 +30,7 @@
       });
 
       map.on('load', () => {
-
-	//Al js van entre cometes els paràmetres de les propietats que sóon string (dreta dels 2 punts) i les propietats compostes (i.e. separades per guionet) però podrien anar totes entre cometes (segurament és bona pràctica)
+        //Al js van entre cometes els paràmetres de les propietats que sóon string (dreta dels 2 punts) i les propietats compostes (i.e. separades per guionet) però podrien anar totes entre cometes (segurament és bona pràctica)
 
         // 1. Simbolització per districtes:
         simb_distr = [
@@ -116,7 +115,31 @@
           minzoom: 12,
           layout: {
             visibility: 'visible',
-            'icon-image': 'marker-15', // 'mapbox-home-15'
+
+            'icon-image': 'marker-15', // Name of the preferred compatible icon
+            // The icon will be visible even if it collides
+            'icon-allow-overlap': true,
+            // Other symbols can be visible even if they collide with the icon
+            'icon-ignore-placement': true,
+
+            // Get the label text from the source's "name" property
+            'text-field': ['to-string', ['get', 'name']],
+            'text-offset': [0, 1],
+            'text-anchor': 'top', // Anchor on top of text
+            // Label will be hidden if it collides with other labels
+            'text-optional': true,
+          },
+          paint: {
+            // Translation from the anchor to not overlap
+            'icon-translate': [-25, -25],
+            'text-translate': [-28, -28],
+
+            // Halo width depending on the zoom bc only needed for buildings
+            'text-halo-width': ['step', ['zoom'], 0, 14, 5, 22, 5],
+            // Text symbology
+            'text-color': 'black',
+            'text-halo-color': 'white',
+            'text-halo-blur': 1,
           },
           'source-layer': 'RefugisClimatics',
         });

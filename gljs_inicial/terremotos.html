@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Terremotos</title>
+    <title>Terratrèmols</title>
     <meta
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
@@ -11,9 +11,10 @@
       href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css"
       rel="stylesheet"
     />
-    <link href="css/estilobase.css" rel="stylesheet" />
-    <script src="js/utils.js"></script>
-    <script src="js/terremotos.js"></script>
+
+    <link href="../css/estilobase.css" rel="stylesheet" />
+    <script src="../js/utils.js"></script>
+    <script src="../js/terremotos.js"></script>
     <script>
       var map;
       function init() {
@@ -56,7 +57,7 @@
   </head>
 
   <body onload="init()">
-    <div class="panelTitulo">Terremotos</div>
+    <div class="panelTitulo">Terratrèmols</div>
 
     <div class="panelTopIzquierda">
       <select id="mag" onChange="generarPeticionTerremotos()">
