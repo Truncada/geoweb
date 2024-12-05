@@ -1,4 +1,4 @@
-async function enviarPeticion(url) {
+/*async*/ function enviarPeticion(url) {
 
     return fetch(url)
         .then(function (response) {

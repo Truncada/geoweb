@@ -60,11 +60,11 @@
 
         map.on("load", function () {
           // reutilizamos funcion de utils para obtener geojson
-          enviarPeticion("datos/turkey.geojson").then(function (datos) {
+          enviarPeticion("../datos/turkey.geojson").then(function (datos) {
             farmaciasGeoJSON = datos;
             
             addFarmacias();
-            //addPopupToMap("farmacias");
+            addPopupToMap("farmacias");
             
             addFarmaciasCercanas();
             console.info(map.getStyle());
