@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+
+    <title>Visualització Shelters</title>
+    <meta
+      property="og:description"
+      content="Amplia el mapa per veure edificis en 3D, passa per sobre les icones per veure informació sobre els refugis climàtics."
+    />
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
+    <link href="css/style.css" rel="stylesheet" />
+
+    <script src="js/utils.js"></script>
+    <script>
+      simb_sheltcoverage = [
+        "match",
+        ["get", "ShelterCov"],
+        0,
+        "hsl(0, 0%, 100%)",
+        [1],
+        "hsl(180, 100%, 53%)",
+        "hsl(0, 3%, 77%)",
+      ];
+      function init() {
+        addMap();
+
+        map.on("load", function () {
+          //Layers
+          add3Dbuildings(simb_sheltcoverage);
+
+          sendRequest("data/RefugisCLimatics.geojson").then(function (data) {
+            refugis = data;
+
+            readContent();
+            addPopupToMap("refugisClimatics");
+          }); //fi function from requested data
+
+          //Events
+          map.on("idle", (e) => {
+            activateRotation();
+          }); //fi map.onIdle
+
+          zoomThreshold = 14;
+          const buildingsLegend = document.getElementById("buildings-legend");
+          map.on("zoom", () => {
+            if (map.getZoom() > zoomThreshold) {
+              buildingsLegend.style.display = "block";
+            } else {
+              buildingsLegend.style.display = "none";
+            }
+          }); //fi map.onZoom
+        }); //fi onload
+      } //fi init
+    </script>
+  </head>
+  <body onload="init()">
+    <div id="map"></div>
+    <div id="buildings-legend" class="legend" style="display: none">
+      <h2>Shelter coverage</h2>
+      <div style="height: 10px; display: inline-block"></div>
+      <div>
+        <span style="background-color: hsl(180, 100%, 53%)"></span>Covered by a
+        climate shelter
+      </div>
+      <div style="height: 10px"></div>
+      <div>
+        <span style="background-color: hsl(0, 0%, 100%)"></span>Not covered by a
+        climate shelter
+      </div>
+      <div style="height: 10px"></div>
+      <div><span style="background-color: hsl(0, 3%, 77%)"></span>No data</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+
+    <title>Scrollytelling Shelters</title>
+    <meta
+      property="og:description"
+      content="Amplia el mapa per veure edificis en 3D, passa per sobre les icones per veure informació sobre els refugis climàtics."
+    />
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="FinalVIz-OFF/js/utils.js"></script>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "DM Sans", "Helvetica", "Arial";
+      }
+      html,
+      body,
+      #map {
+        height: 100%;
+      }
+.mapboxgl-popup {
+    max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+}
+      #map {
+        position: fixed;
+        width: 75%;
+      }
+      #features {
+        width: 25%;
+        margin-left: 75%;
+        overflow-y: scroll;
+        background-color: #fcfafa;
+      }
+
+      section {
+        padding: 25px 90px 25px 50px;
+        /*line-height: 25px;*/
+        border-bottom: 1px solid #ddd;
+        opacity: 0.25;
+        font-size: 13px;
+        height: 100vh;
+        text-align: justify;
+      }
+
+      section.active {
+        opacity: 1;
+      }
+      section:last-child {
+        border-bottom: none;
+        margin-bottom: 200px;
+      }
+
+      .nav-wrap {
+        position: fixed;
+        left: auto;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+        display: flex;
+        width: 90px;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .nav-inner-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .nav-item {
+        width: 12px;
+        height: 12px;
+        margin-bottom: 12px;
+        flex: 0 0 auto;
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgba(0, 0, 0, 0.5);
+        border-radius: 100%;
+        transition: all 100ms ease;
+      }
+
+      .nav-item:hover {
+        background-color: #003C74;
+      }
+    </style>
+    </head>
+  <body onload="init()">
+    <div id="map"></div>
+    <div class="nav-wrap">
+      <nav class="nav-inner-wrap" id="buttons"></nav>
+    </div>
+    <div id="features">
+      <section id="intro" class="active">
+        <h2>Intro</h2>
+        <p>
+          Aquest mapa és una DEMO de les possibilitats de visualització de
+          scrollytelling i edificis en 3D de Mapbox.
+        </p>
+      </section>
+      <section id="capitolu">
+        <h3>Mercat Poblenou - Unió</h3>
+        <p>
+
+Esse minus dolorem repudiandae cumque corporis placeat ad quod. Impedit laboriosam est aut commodi quasi qui. Aspernatur at est asperiores nobis porro occaecati et tenetur. Velit magni nesciunt perspiciatis impedit voluptatum consequuntur et quis. Id libero vitae dolorem qui quia ut tenetur.
+
+Dolor esse consequatur sit atque ut perferendis modi ut. Sint in est numquam reiciendis ipsum soluta. Est totam nostrum quasi aliquam et facere. Et esse quo autem perspiciatis aperiam ipsam sit.
+
+Iste laudantium dignissimos non a suscipit soluta. Deleniti numquam excepturi enim rerum et nihil. Totam dolor fuga quidem in molestiae eos labore minima. Iste accusamus sed hic qui sed.
+
+Voluptatem facere similique consequatur accusamus officia eaque doloribus. Velit maxime velit qui distinctio non maiores maiores et. Dolores ut omnis animi provident voluptate autem est vitae.
+
+Aut fuga eos sit sit architecto. Officiis iste officia quos voluptatem. Necessitatibus reiciendis ut ad sit. Sit necessitatibus sit est praesentium aliquam est molestiae voluptas. Sit laboriosam ex et aut nihil sit occaecati iste. Mollitia qui temporibus praesentium reiciendis natus debitis impedit.
+</p>
+        <small id="citation">
+          Adapted from
+          <a href="https://www.gutenberg.org/files/2346/2346-h/2346-h.htm"
+            >Climate Shelters</a
+          >
+        </small>
+      </section>
+    </div>
+  </body>
+    <script>
+      const chapters = {
+        intro: {
+          center: [2.1415939309045324, 41.39262923727583], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+          zoom: 12, // starting zoom
+          pitch: 45,
+          bearing: -45,
+        },
+        capitolu: {
+          bearing: 90,
+          center: [2.205429, 41.401022],
+          zoom: 17.3,
+          pitch: 40,
+        },
+      }; //fi chapters
+
+      const chapterNames = Object.keys(chapters);
+      
+      //Variable on es guardarà el valor del capítol en què s'està. S'inicialitza amb el primer
+      let activeChapterName = "intro";
+
+      let activeButtonID = "button-intro";
+
+      //QUE CANVII COLOR DEL OTÓ QUAN UN ESTÀ SELECCIONAT
+      function setActiveChapter(chapterName) {
+        if (chapterName === activeChapterName) return;
+
+        map.flyTo(chapters[chapterName]);
+
+        document.getElementById(chapterName).setAttribute("class", "active");
+        document.getElementById(activeChapterName).setAttribute("class", "");
+
+        var buttonID = "button-" + chapterName;
+        document.getElementById(buttonID).style.backgroundColor = "#003C74"; //Main vCity brand color, dark blue
+        document.getElementById(activeButtonID).style.backgroundColor =
+          "#BDCCDC"; //Secondary vCity brand color, light blue gray
+        activeButtonID = buttonID;
+
+        activeChapterName = chapterName;
+      }
+
+      function isElementOnScreen(id) {
+        const element = document.getElementById(id);
+        const bounds = element.getBoundingClientRect();
+        return bounds.top < window.innerHeight && bounds.bottom > 0;
+      }
+
+      function init() {
+
+          ///////////////////////////////////////CHAPTERS
+
+          // CALL FUNCTION CREATE BUTTON
+          chapterNames.forEach(function (chapter) {
+            var button = document.createElement("a");
+            button.className = "nav-item";
+            button.id = "button-" + chapter;
+            button.href = "#" + chapter;
+            document.getElementById("buttons").appendChild(button);
+          });
+          //INIT VALUE
+          document.getElementById("button-intro").style.backgroundColor =
+            "#003C74";
+
+          // On every scroll event, check which element is on screen
+          window.onscroll = function () {
+            for (let i = 0; i < chapterNames.length; i++) {
+              const chapterName = chapterNames[i];
+              if (isElementOnScreen(chapterName)) {
+                setActiveChapter(chapterName);
+                break;
+              }
+            }
+          };
+
+        addMap();
+
+        map.on("load", function () {
+          //Layers
+          //add3Dbuildings();
+          sendRequest("./FinalVIz-OFF/data/RefugisCLimatics.geojson").then(function (data) {
+            refugis = data;
+
+            readContent();
+            addPopupToMap("refugisClimatics");
+          }); //fi function from requested data
+
+          map.on("idle", (e) => {
+            activateRotation();
+          }); //fi map.onIdle
+        }); //fi onload
+      } //fi init
+    </script>
+</html>

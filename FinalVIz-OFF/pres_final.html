@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <html lang="ca">
+    <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <title>Galeria 3D</title>
+      <meta name="description" content="" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <style>
+             ::-webkit-scrollbar {
+               display: none;
+             }
+             * {
+               -ms-overflow-style: none;
+               scrollbar-width: none;
+             }
+             img {
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+             }
+             body {
+               background-color: #000;
+             }
+             .contenidor-titol {
+               text-align: center;
+               width: 100%;
+               margin-bottom: 20px;
+               padding-top: 20px;
+               color: #fff;
+             }
+
+             .contenidor-titol h2 {
+               font-style: italic;
+               font-size: 1.2em;
+             }
+
+             .container {
+               position: absolute;
+               top: 25%;
+               left: 0;
+               width: 500px;
+               height: 100vw;
+               transform: rotate(-90deg) translateY(-500px);
+               transform-origin: top right;
+               overflow-x: hidden;
+               overflow-y: auto;
+               counter-reset: offset;
+             }
+             .content {
+               counter-increment: offset;
+               position: relative;
+               width: 100%;
+               height: 500px;
+               transform: rotate(90deg);
+               margin: 10px 0;
+             }
+             .contingut{
+              top:50%;
+              left:50%;
+              position:absolute;
+               background-color: #fff;
+               text-align: center;
+               padding: 10px;
+               transform: translate(-50%, -50%);
+        border-radius:14px;
+      </style>
+    </head>
+    <body>
+      <div class="contenidor-titol">
+        <h1>Galeria Mapbox edificis en 3D</h1>
+        <h2>
+          Projecte per a crear mapes d'edificis en 3 dimensions i documentació
+          per a replicar-los i adaptar-los a noves necessitats.
+        </h2>
+      </div>
+
+      <div class="container">
+
+        <div class="content">
+          <a href="a.html">
+            <img src="img/a.png" alt="" />
+          </a>
+          <div class="contingut">
+            <h3>a_3dEstandard-Studio</h3>
+            <p>
+              Estil estàndard de Mapbox amb edificis en 3D des de Mapbox Studio
+            </p>
+            <ul>
+              <li>OSM buildings modificat per Mapbox</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content">
+          <a href="b.html">
+            <img src="img/b.png" alt="" />
+          </a>
+          <div class="contingut">
+            <h3>b_ExtrusioOSM-Studio</h3>
+            <p>Extrusió d’OSM des de Mapbox Studio</p>
+            <ul>
+              <li>OSM buildings</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content">
+          <a href="c.html">
+            <img src="img/a.png" alt="" />
+          </a>
+          <div class="contingut">
+            <h3>c_3dEstandard-GLJS</h3>
+            <p>
+              Estil estàndard de Mapbox amb edificis en 3D des de Mapbox GL JS
+              (html)
+            </p>
+            <ul>
+              <li>OSM buildings modificat per Mapbox</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content">
+          <a href="d.html">
+            <img src="img/b.png" alt="" />
+          </a>
+          <div class="contingut">
+            <h3>d_ExtrusioOSM-GLJS</h3>
+            <p>Extrusió d’OSM des de Mapbox GL JS (html)</p>
+            <ul>
+              <li>OSM buildings</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content">
+          <a href="e.html">
+            <img src="img/e.png" alt="" />
+          </a>
+          <div class="contingut">
+            <h3>e_VariablesCadastre-Studio</h3>
+            <p>
+              Extrusió per nombre de pisos i color de l’edifici per variable
+              pròpia (categòrica, districtes) a partir de la capa d'edificis de
+              Cadastre Inspire des de Mapbox Studio
+            </p>
+            <ul>
+              <li>Edificis de cadastre inspire</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content">
+          <a href="e1.html">
+            <img src="img/e1.png" alt="" />
+          </a>
+          <div class="contingut">
+            <h3>e1_VariablesCadastre-Studio+Distr</h3>
+            <p>
+              Extrusió per nombre de pisos i color de l’edifici per variable
+              pròpia (categòrica, districtes) a partir de la capa d'edificis de
+              Cadastre Inspire. El zoom restant des de l’inicial fins que són
+              visibles els edificis es cobreix per la capa de districtes de
+              Barcelona simbolitzada de la mateixa forma. Des de Mapbox Studio
+            </p>
+            <ul>
+              <li>Edificis de cadastre inspire</li>
+              <li>Districtes de Barcelona</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content">
+          <a href="f.html">
+            <img src="img/e.png" alt="" />
+          </a>
+          <div class="contingut">
+            <h3>f_VariablesCadastre-GLJS</h3>
+            <p>
+              Extrusió per nombre de pisos i color de l’edifici per variable
+              pròpia (categòrica, districtes) a partir de la capa d'edificis de
+              Cadastre Inspire des de Mapbox GL JS
+            </p>
+            <ul>
+              <li>Edificis de cadastre inspire</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content">
+          <a href="f1.html">
+            <img src="img/e1.png" alt="" />
+          </a>
+          <div class="contingut">
+            <h3>f1_VariablesCadastre-GLJS+Distr</h3>
+            <p>
+              Extrusió per nombre de pisos i color de l’edifici per variable
+              pròpia (categòrica, districtes) a partir de la capa d'edificis de
+              Cadastre Inspire. El zoom restant des de l’inicial fins que són
+              visibles els edificis es cobreix per la capa de districtes de
+              Barcelona simbolitzada de la mateixa forma. Des de Mapbox GL JS
+            </p>
+            <ul>
+              <li>Edificis de cadastre inspire</li>
+              <li>Districtes de Barcelona</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content">
+          <a href="g.html">
+            <img src="img/g.png" alt="" />
+          </a>
+          <div class="contingut">
+            <h3>g_3dCadDistRef-Studio</h3>
+            <p>
+              El zoom des de l'inicial fins a què es poden visualitzar edificis
+              està cobert per la capa de districtes, i a sobre es carrega la
+              capa de refugis climàtics des de Mapbox Studio
+            </p>
+            <ul>
+              <li>Edificis de cadastre inspire</li>
+              <li>Districtes de Barcelona</li>
+              <li>Punts de refugis climàtics de Barcelona</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="content">
+          <a href="h.html">
+            <img src="img/h.png" alt="" />
+          </a>
+          <div class="contingut">
+            <h3>h_3dCadDistRef-GLJS</h3>
+            <p>
+              El zoom des de l'inicial fins a què es poden visualitzar edificis
+              està cobert per la capa de districtes, i a sobre es carrega la
+              capa de refugis climàtics des de Mapbox GL JS
+            </p>
+            <ul>
+              <li>Edificis de cadastre inspire</li>
+              <li>Districtes de Barcelona</li>
+              <li>Punts de refugis climàtics de Barcelona</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
+</html>
