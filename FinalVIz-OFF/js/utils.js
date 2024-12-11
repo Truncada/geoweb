@@ -48,12 +48,12 @@ var popup = new mapboxgl.Popup({
 //----------------------------------------------------------------------------------------------//
 // 3. Components: On es defineixen els elements visuals
 //----------------------------------------------------------------------------------------------//
-addMap = function () {
+addMap = function (basemapStyle) {
   mapboxgl.accessToken =
     "pk.eyJ1IjoibWFwYXRvciIsImEiOiJja3dxaXdvZm8wbXI5Mm9xb2JraDJmMjY3In0.cluUTNNRHJwurzUx6dMZDQ";
   map = new mapboxgl.Map({
     container: "map", // container ID
-    style: "mapbox://styles/mapbox/satellite-v9", // Estil pla per evitar superposició, quan s'afegeixen "symbols", si no s'afegeixen des de studio a un estil, s'han d'agafar els que per defecte són compatibles amb uns estils limitats
+    style: basemapStyle, // Estil pla per evitar superposició, quan s'afegeixen "symbols", si no s'afegeixen des de studio a un estil, s'han d'agafar els que per defecte són compatibles amb uns estils limitats
     center: [2.1415939309045324, 41.39262923727583], // starting position [lng, lat]. Note that lat must be set between -90 and 90
     zoom: 12, // starting zoom
     pitch: 45,

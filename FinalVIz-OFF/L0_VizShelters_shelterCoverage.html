@@ -21,23 +21,21 @@
 
     <script src="js/utils.js"></script>
     <script>
-      simb_vulnpop = [
-        "interpolate",
-        ["linear"],
-        ["to-number", ["get", "p_ed_pop_v"]],
+      simb_sheltcoverage = [
+        "match",
+        ["get", "ShelterCov"],
         0,
         "hsl(0, 0%, 100%)",
-        20,
-        "hsl(43, 92%, 64%)",
-        40,
-        "hsl(0, 92%, 55%)",
+        [1],
+        "hsl(180, 100%, 53%)",
+        "hsl(0, 3%, 77%)",
       ];
       function init() {
-        addMap();
+        addMap("mapbox://styles/mapbox/light-v9");
 
         map.on("load", function () {
           //Layers
-          add3Dbuildings(simb_vulnpop);
+          add3Dbuildings(simb_sheltcoverage);
 
           sendRequest("data/RefugisCLimatics.geojson").then(function (data) {
             refugis = data;
@@ -67,17 +65,19 @@
   <body onload="init()">
     <div id="map"></div>
     <div id="buildings-legend" class="legend" style="display: none">
-      <h2>Vulnerable population</h2>
+      <h2>Shelter coverage</h2>
       <div style="height: 10px; display: inline-block"></div>
-      <div><span style="background-color: hsl(0, 0%, 100%)"></span>0 - 20</div>
-      <div style="height: 10px"></div>
       <div>
-        <span style="background-color: hsl(43, 92%, 64%)"></span>20 - 60
+        <span style="background-color: hsl(180, 100%, 53%)"></span>Covered by a
+        climate shelter
       </div>
       <div style="height: 10px"></div>
       <div>
-        <span style="background-color: hsl(0, 92%, 55%)"></span>60 - >400
+        <span style="background-color: hsl(0, 0%, 100%)"></span>Not covered by a
+        climate shelter
       </div>
+      <div style="height: 10px"></div>
+      <div><span style="background-color: hsl(0, 3%, 77%)"></span>No data</div>
     </div>
   </body>
 </html>

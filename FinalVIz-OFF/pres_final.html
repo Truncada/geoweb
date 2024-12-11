@@ -23,6 +23,11 @@
              body {
                background-color: #000;
              }
+
+             .contenidor-titol ul {
+              list-style-type: none;
+             }
+
              .contenidor-titol {
                text-align: center;
                width: 100%;
@@ -38,7 +43,7 @@
 
              .container {
                position: absolute;
-               top: 25%;
+               top: 40%;
                left: 0;
                width: 500px;
                height: 100vw;
@@ -69,184 +74,114 @@
     </head>
     <body>
       <div class="contenidor-titol">
-        <h1>Galeria Mapbox edificis en 3D</h1>
+        <h1>Climate shelters with 3D buildings gallery</h1>
         <h2>
-          Projecte per a crear mapes d'edificis en 3 dimensions i documentació
-          per a replicar-los i adaptar-los a noves necessitats.
+          Click on a picture to go to the map. There are 2 layers:
+          <ul>
+            <li>1) Climate shelter points</li>
+            <li>2) 3D buildings, represented in 2 different ways,</li>
+            <ul>
+              <li>a) Vulnerable population</li>
+              <li>b) Coverage by climate shelters</li>
+            </ul>
+          </ul>
         </h2>
+        <p>There are 3 basemap styles:
+          <ul>
+            <li>- B = Basic style</li>
+            <li>- L = Light style</li>
+            <li>- S = Satellite style</li>
+          </ul>          
+        </p>
       </div>
 
       <div class="container">
 
         <div class="content">
-          <a href="a.html">
+          <a href="B0_VizShelters_vulnerablePopulation.html">
             <img src="img/a.png" alt="" />
           </a>
           <div class="contingut">
-            <h3>a_3dEstandard-Studio</h3>
-            <p>
-              Estil estàndard de Mapbox amb edificis en 3D des de Mapbox Studio
-            </p>
+            <h3>B0-VulnerablePopulation</h3>
             <ul>
-              <li>OSM buildings modificat per Mapbox</li>
+              <li>Basic style</li>
+              <li>Day light</li>
+              <li>Vulnerable population</li>
             </ul>
           </div>
         </div>
 
         <div class="content">
-          <a href="b.html">
+          <a href="B0_VizShelters_shelterCoverage.html">
             <img src="img/b.png" alt="" />
           </a>
           <div class="contingut">
-            <h3>b_ExtrusioOSM-Studio</h3>
-            <p>Extrusió d’OSM des de Mapbox Studio</p>
+            <h3>B0-ShelterCoverage</h3>
             <ul>
-              <li>OSM buildings</li>
+              <li>Basic style</li>
+              <li>Day light</li>
+              <li>Shelter coverage</li>
             </ul>
           </div>
         </div>
 
         <div class="content">
-          <a href="c.html">
-            <img src="img/a.png" alt="" />
+          <a href="L0_VizShelters_vulnerablePopulation.html">
+            <img src="img/c.png" alt="" />
           </a>
           <div class="contingut">
-            <h3>c_3dEstandard-GLJS</h3>
-            <p>
-              Estil estàndard de Mapbox amb edificis en 3D des de Mapbox GL JS
-              (html)
-            </p>
+            <h3>L0-VulnerablePopulation</h3>
             <ul>
-              <li>OSM buildings modificat per Mapbox</li>
+              <li>Light style</li>
+              <li>Day light</li>
+              <li>Vulnerable population</li>
             </ul>
           </div>
         </div>
 
         <div class="content">
-          <a href="d.html">
-            <img src="img/b.png" alt="" />
+          <a href="L0_VizShelters_shelterCoverage.html">
+            <img src="img/d.png" alt="" />
           </a>
           <div class="contingut">
-            <h3>d_ExtrusioOSM-GLJS</h3>
-            <p>Extrusió d’OSM des de Mapbox GL JS (html)</p>
+            <h3>L0-ShelterCoverage</h3>
             <ul>
-              <li>OSM buildings</li>
+              <li>Light style</li>
+              <li>Day light</li>
+              <li>Shelter coverage</li>
             </ul>
           </div>
         </div>
 
         <div class="content">
-          <a href="e.html">
+          <a href="S0_VizShelters_vulnerablePopulation.html">
             <img src="img/e.png" alt="" />
           </a>
           <div class="contingut">
-            <h3>e_VariablesCadastre-Studio</h3>
-            <p>
-              Extrusió per nombre de pisos i color de l’edifici per variable
-              pròpia (categòrica, districtes) a partir de la capa d'edificis de
-              Cadastre Inspire des de Mapbox Studio
-            </p>
+            <h3>S0-VulnerablePopulation</h3>
             <ul>
-              <li>Edificis de cadastre inspire</li>
+              <li>Satellite style</li>
+              <li>Day light</li>
+              <li>Vulnerable population</li>
             </ul>
           </div>
         </div>
 
         <div class="content">
-          <a href="e1.html">
-            <img src="img/e1.png" alt="" />
+          <a href="S0_VizShelters_shelterCoverage.html">
+            <img src="img/f.png" alt="" />
           </a>
           <div class="contingut">
-            <h3>e1_VariablesCadastre-Studio+Distr</h3>
-            <p>
-              Extrusió per nombre de pisos i color de l’edifici per variable
-              pròpia (categòrica, districtes) a partir de la capa d'edificis de
-              Cadastre Inspire. El zoom restant des de l’inicial fins que són
-              visibles els edificis es cobreix per la capa de districtes de
-              Barcelona simbolitzada de la mateixa forma. Des de Mapbox Studio
-            </p>
+            <h3>S0-ShelterCoverage</h3>
             <ul>
-              <li>Edificis de cadastre inspire</li>
-              <li>Districtes de Barcelona</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="content">
-          <a href="f.html">
-            <img src="img/e.png" alt="" />
-          </a>
-          <div class="contingut">
-            <h3>f_VariablesCadastre-GLJS</h3>
-            <p>
-              Extrusió per nombre de pisos i color de l’edifici per variable
-              pròpia (categòrica, districtes) a partir de la capa d'edificis de
-              Cadastre Inspire des de Mapbox GL JS
-            </p>
-            <ul>
-              <li>Edificis de cadastre inspire</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="content">
-          <a href="f1.html">
-            <img src="img/e1.png" alt="" />
-          </a>
-          <div class="contingut">
-            <h3>f1_VariablesCadastre-GLJS+Distr</h3>
-            <p>
-              Extrusió per nombre de pisos i color de l’edifici per variable
-              pròpia (categòrica, districtes) a partir de la capa d'edificis de
-              Cadastre Inspire. El zoom restant des de l’inicial fins que són
-              visibles els edificis es cobreix per la capa de districtes de
-              Barcelona simbolitzada de la mateixa forma. Des de Mapbox GL JS
-            </p>
-            <ul>
-              <li>Edificis de cadastre inspire</li>
-              <li>Districtes de Barcelona</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="content">
-          <a href="g.html">
-            <img src="img/g.png" alt="" />
-          </a>
-          <div class="contingut">
-            <h3>g_3dCadDistRef-Studio</h3>
-            <p>
-              El zoom des de l'inicial fins a què es poden visualitzar edificis
-              està cobert per la capa de districtes, i a sobre es carrega la
-              capa de refugis climàtics des de Mapbox Studio
-            </p>
-            <ul>
-              <li>Edificis de cadastre inspire</li>
-              <li>Districtes de Barcelona</li>
-              <li>Punts de refugis climàtics de Barcelona</li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="content">
-          <a href="h.html">
-            <img src="img/h.png" alt="" />
-          </a>
-          <div class="contingut">
-            <h3>h_3dCadDistRef-GLJS</h3>
-            <p>
-              El zoom des de l'inicial fins a què es poden visualitzar edificis
-              està cobert per la capa de districtes, i a sobre es carrega la
-              capa de refugis climàtics des de Mapbox GL JS
-            </p>
-            <ul>
-              <li>Edificis de cadastre inspire</li>
-              <li>Districtes de Barcelona</li>
-              <li>Punts de refugis climàtics de Barcelona</li>
+              <li>Satellite style</li>
+              <li>Day light</li>
+              <li>Shelter coverage</li>
             </ul>
           </div>
         </div>
       </div>
+
     </body>
   </html>
 </html>
