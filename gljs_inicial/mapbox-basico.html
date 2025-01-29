@@ -23,8 +23,7 @@
        <script>
         var map;  // tambien const map;
           function init() {
-                    mapboxgl.accessToken = ${{ secrets.MAPBOX_TOKEN }}
-                        //'pk.eyJ1IjoibWFwYXRvciIsImEiOiJja3dxaXdvZm8wbXI5Mm9xb2JraDJmMjY3In0.cluUTNNRHJwurzUx6dMZDQ';
+                    mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYXRvciIsImEiOiJja3dxaXdvZm8wbXI5Mm9xb2JraDJmMjY3In0.cluUTNNRHJwurzUx6dMZDQ';
                     map = new mapboxgl.Map({
                         container: 'map',
                         style: 'mapbox://styles/mapator/clfco16sz008i01pjx01j4vbc',
