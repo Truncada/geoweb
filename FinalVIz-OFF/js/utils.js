@@ -50,7 +50,7 @@ var popup = new mapboxgl.Popup({
 //----------------------------------------------------------------------------------------------//
 addMap = function (basemapStyle) {
   mapboxgl.accessToken =
-    "pk.eyJ1IjoibWFwYXRvciIsImEiOiJja3dxaXdvZm8wbXI5Mm9xb2JraDJmMjY3In0.cluUTNNRHJwurzUx6dMZDQ";
+    "pk.eyJ1IjoibWFwYXRvciIsImEiOiJjbTZmam4waDgwNTZyMmtzMGdva2U2Z3RzIn0.-ATkyErnGnpGKRjeMZyDHQ";
   map = new mapboxgl.Map({
     container: "map", // container ID
     style: basemapStyle, // Estil pla per evitar superposició, quan s'afegeixen "symbols", si no s'afegeixen des de studio a un estil, s'han d'agafar els que per defecte són compatibles amb uns estils limitats
