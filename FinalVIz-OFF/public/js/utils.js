@@ -99,7 +99,7 @@ add3Dbuildings = function (simb_buildings) {
     source: "edificis_source",
     "source-layer": "Barnaiv-b5wkn1", // Nombre Tileset
     maxzoom: 22,
-    minzoom:14,
+    minzoom: 14,
     paint: {
       "fill-extrusion-color": simb_buildings,
       "fill-extrusion-height": ["*", 2, ["to-number", ["get", "numberOfFl"]]], //to-number, el valor que passo com a altura no sé si és nombre o no.
@@ -145,15 +145,15 @@ function addPopupToMap(layerName) {
     var text = "";
     console.info(e);
     for (key in e.features[0].properties) {
-            if (key == "name") {  
-                text += "<h2>" + e.features[0].properties[key] + "</h2>" + "<br>";
-            }
-            if (key == "address") {
-                text+= e.features[0].properties[key] + "<br>";
-            }
-            if (key == "image") {
-                text += "<img width=200 src="+ e.features[0].properties[key]+"><br>";
-            }
+      if (key == "name") {
+        text += "<h2>" + e.features[0].properties[key] + "</h2>" + "<br>";
+      }
+      if (key == "address") {
+        text += e.features[0].properties[key] + "<br>";
+      }
+      if (key == "image") {
+        text += "<img width=200 src=" + e.features[0].properties[key] + "><br>";
+      }
     }
 
     popup.setLngLat(e.lngLat).setHTML(text).addTo(map);
